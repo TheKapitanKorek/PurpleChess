@@ -1,0 +1,179 @@
+/* VARIABLES */
+:root {
+  --main-dark-color: rgb(70, 30, 130);
+  --main-light-color: rgb(220, 220, 220);
+  --secondary-light-color: rgb(130, 50, 230);
+  --secondary-dark-color: rgb(30, 30, 30);
+}
+/* APP GENERAL LAYOUT AND STYLES */
+html {
+  font-family: sans-serif;
+  font-size: 2vh;
+  background-color: var(--secondary-dark-color);
+  color: var(--secondary-light-color);
+}
+
+.button {
+  list-style: none;
+  height: 10vh;
+  width: 10vw;
+  text-align: center;
+  line-height: 10vh;
+  line-break: strict;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  width: 100%;
+  font-size: 1.2em;
+}
+.button:hover {
+  background-color: var(--main-dark-color);
+  color: var(--main-light-color);
+}
+
+#app-box {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 40vh 80vh 40vh;
+  grid-template-rows: 15vh 80vh 5vh;
+  grid-template-areas:
+    "head head head"
+    "nav chess variable"
+    "footer footer footer";
+}
+
+header {
+  grid-area: head;
+  margin-left: 5vw;
+  font-size: 1.5em;
+}
+#main {
+  grid-area: chess;
+}
+#navigation {
+  grid-area: nav;
+}
+#variable-content {
+  grid-area: variable;
+}
+footer {
+  grid-area: footer;
+  background-color: var(--secondary-dark-color);
+  color: var(--secondary-light-color);
+}
+
+/* CHESS BOARD LAYOUT AND STYLES */
+
+#chess-board {
+  width: 80vh;
+  height: 80vh;
+  display: grid;
+  grid-template-rows: 96% 4%;
+  grid-template-columns: 4% 96%;
+  grid-template-areas:
+    "vertical board"
+    "corner horizontal";
+}
+#board {
+  display: grid;
+  grid-area: board;
+  background-color: var(--main-light-color);
+  background-size: 19.2vh 19.2vh;
+  background-position: 0 0, 9.6vh 9.6vh, 9.6vh 9.6vh;
+  background-image: linear-gradient(
+      45deg,
+      var(--main-dark-color) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--main-dark-color) 75%,
+      var(--main-dark-color)
+    ),
+    linear-gradient(
+      45deg,
+      var(--main-dark-color) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--main-dark-color) 75%
+    ),
+    linear-gradient(
+      45deg,
+      var(--main-dark-color) 25%,
+      transparent 25%,
+      transparent 75%,
+      var(--main-dark-color) 75%
+    );
+  grid-template-columns: 9.6vh 9.6vh 9.6vh 9.6vh 9.6vh 9.6vh 9.6vh 9.6vh;
+  grid-template-rows: 9.6vh 9.6vh 9.6vh 9.6vh 9.6vh 9.6vh 9.6vh 9.6vh;
+}
+#board.white {
+  grid-template-areas:
+    "a_h b_h c_h d_h e_h f_h g_h h_h"
+    "a_g b_g c_g d_g e_g f_g g_g h_g"
+    "a_f b_f c_f d_f e_f f_f g_f h_f"
+    "a_e b_e c_e d_e e_e f_e g_e h_e"
+    "a_d b_d c_d d_d e_d f_d g_d h_d"
+    "a_c b_c c_c d_c e_c f_c g_c h_c"
+    "a_b b_b c_b d_b e_b f_b g_b h_b"
+    "a_a b_a c_a d_a e_a f_a g_a h_a";
+}
+#board.black {
+  grid-template-areas:
+    "h_a g_a f_a e_a d_a c_a b_a a_a"
+    "h_b g_b f_b e_b d_b c_b b_b a_b"
+    "h_c g_c f_c e_c d_c c_c b_c a_c"
+    "h_d g_d f_d e_d d_d c_d b_d a_d"
+    "h_e g_e f_e e_e d_e c_e b_e a_e"
+    "h_f g_f f_f e_f d_f c_f b_f a_f"
+    "h_g g_g f_g e_g d_g c_g b_g a_g"
+    "h_h g_h f_h e_h d_h c_h b_h a_h";
+}
+#vertical-coordinate {
+  grid-area: vertical;
+  display: flex;
+  flex-direction: column-reverse;
+}
+#horizontal-coordinate {
+  grid-area: horizontal;
+  display: flex;
+  flex-direction: row;
+}
+.index {
+  box-sizing: border-box;
+  display: flexbox;
+  background-color: rgb(20, 0, 70);
+  color: var(--main-light-color);
+  text-align: center;
+}
+#vertical-coordinate .index {
+  line-height: 9.6vh;
+  height: 12.5%;
+}
+#horizontal-coordinate .index {
+  width: 12.5%;
+}
+
+#corner {
+  grid-area: corner;
+  background-color: rgb(20, 0, 70);
+}
+
+.figure img {
+  display: block;
+  box-sizing: border-box;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.move {
+  width: 100%;
+  height: 100%;
+  background-color: yellow;
+  opacity: 0.5;
+}
