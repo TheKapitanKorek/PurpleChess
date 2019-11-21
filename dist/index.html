@@ -12,12 +12,60 @@
         </header>
         <nav id="navigation">
           <ul>
-            <li class="button"><a href="*">My profile</a></li>
-            <li class="button"><a href="*">Friends</a></li>
-            <li class="button"><a href="*">Lasting games</a></li>
+            <li id="game_btn" class="button logged invisible">
+              <p>Game requests</p>
+            </li>
+            <li id="friend_btn" class="button logged invisible">
+              <p>Friend requests</p>
+            </li>
+            <li id="friends_btn" class="button logged invisible">
+              <p>Friends</p>
+            </li>
+            <li id="games_btn" class="button logged invisible">
+              <p>Lasting games</p>
+            </li>
+            <li id="games_btn" class="button logged invisible">
+              <a href="http://localhost:5000/api/logout">Logout</a>
+            </li>
+            <li class="button unlogged invisible">
+              <a href="http://localhost:5000/auth/google">Login</a>
+            </li>
           </ul>
         </nav>
-        <div id="variable-content"></div>
+        <div id="variable-content">
+          <!--
+          <div class="description">
+            <h3>Add friend</h3>
+          </div>
+          <div>
+            <input
+              class="entry friends_nickname"
+              type="text"
+              placeholder="type your friends nickname here"
+            />
+            <div id="add_friend">
+              <h3>+</h3>
+            </div>
+          </div>
+          <div class="description"><h3>Freind requests</h3></div>
+          <ul id="req-list">
+            <li class="item">
+              <div class="name">
+                <p>User_123465</p>
+              </div>
+              <div class="yes button-small"><p>Accept</p></div>
+              <div class="no button-small"><p>Delete</p></div>
+            </li>
+            <li class="item">
+              <div class="name">
+                <p>User_123465</p>
+              </div>
+              <div class="yes button-small"><p>Accept</p></div>
+              <div class="no button-small"><p>Delete</p></div>
+            </li>
+          </ul>
+          -->
+        </div>
         <footer>
           <p>Created by Tomasz Plominski</p>
         </footer>
@@ -50,6 +98,20 @@
         <footer>
           <p>Created by Tomasz Plominski</p>
         </footer>
+      </div>
+    </div>
+    <div class="popup invisible">
+      <div class="nick_change">
+        <h3>Please set your nickname, that will be visible to other users</h3>
+        <input
+          type="text"
+          class="entry nick"
+          placeholder="type your nickname here"
+        />
+        <div class="message" id="nck"></div>
+        <div class="req-button" id="set_nick">
+          <p>Set nickname</p>
+        </div>
       </div>
     </div>
   <script type="text/javascript" src="js/bundle.js"></script></body>

@@ -1,3 +1,7 @@
+const axios = require("axios");
+
+import PORT from "../api/port";
+
 const DOMstrings = {
   verticalCord: document.getElementById("vertical-coordinate"),
   horizontalCord: document.getElementById("horizontal-coordinate"),
@@ -41,12 +45,23 @@ const displayMove = function(x, y, id) {
   DOMstrings.board.insertAdjacentHTML("afterbegin", html);
 };
 
+//display adequate interface components
 //public components
 export default {
-  gameSetup: function(color, board) {
+  displayProfile: async function() {
+    const user = await axios.get(PORT + "/api/current_user");
+    const visibleObjects = user.data ? ".logged" : ".unlogged";
+    document
+      .querySelectorAll(visibleObjects)
+      .forEach(el => el.classList.remove("invisible"));
+    if (user.data.nick === "new_User") {
+      document.querySelector(".popup").classList.remove("invisible");
+    }
+  },
+  gameSetup: function(color, game) {
     DOMstrings.board.innerHTML = "";
     blackOrWhite(color);
-    displayPieces(board);
+    displayPieces(game.board);
   },
   addEventListeners: function(fn) {
     const figures = DOMstrings.board.querySelectorAll(".figure");
@@ -69,7 +84,7 @@ export default {
       el.parentNode.removeChild(el);
     });
   },
-  makeMove: function(destinationPiece, piece) {
+  makeMove: function(piece, destinationPiece) {
     if (destinationPiece) {
       const desPiece = document.getElementById(destinationPiece.id);
       desPiece.parentNode.removeChild(desPiece);

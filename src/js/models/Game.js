@@ -1,9 +1,12 @@
-import Figure from "./Figure";
+import PORT from "../api/port";
+import axios from "axios";
 class Game {
-  constructor(board) {
-    this.board = board.map(
-      el => new Figure(el.color, el.position, el.type, el.id)
-    );
+  constructor(board, turn, id, color) {
+    this.board = board;
+    this.turn = turn;
+    this.gameID = id;
+    this.userColor = color;
+    this.switch = "off";
   }
   makeMove = function(piece, x, y) {
     const destinationPiece = this.board.find(
@@ -321,5 +324,30 @@ class Game {
     });
     return moves;
   };
+  //experimental
+  on = async function() {
+    this.switch = "on";
+    while (this.switch === "on") {
+      console.log("kaczorek");
+      const response = await makePromise(this.gameID);
+      if (response.turn === this.userColor) {
+        this.switch = "off";
+        return response.lastMove;
+      }
+    }
+  };
+  off = function() {
+    this.switch = "off";
+  };
 }
+const makePromise = function(gameID) {
+  return new Promise((resolve, reject) => {
+    setTimeout(async function() {
+      const response = await axios.get(
+        PORT + "/api/games/check_game/" + gameID
+      );
+      resolve(response.data);
+    }, 1000);
+  });
+};
 export default Game;
