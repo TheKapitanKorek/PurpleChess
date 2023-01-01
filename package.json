@@ -21,8 +21,8 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
-    "webpack": "^4.39.0",
-    "webpack-cli": "^3.3.6",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
@@ -31,7 +31,7 @@
     "cookie-session": "^1.3.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "mongoose": "^5.6.9",
     "nodemon": "^1.19.1",
     "passport": "^0.4.0",
